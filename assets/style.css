@@ -181,6 +181,9 @@ a:hover { color: var(--accent-lit); }
 
 .hero__body > :first-child { margin-top: 0; }
 
+/* No photo yet: let the text take the full width instead of leaving an empty column. */
+.hero:not(:has(.hero__photo)) { grid-template-columns: 1fr; }
+
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; gap: 1.5rem; }
   .hero__photo { width: 150px; height: 184px; }
