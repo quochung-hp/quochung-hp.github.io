@@ -5,14 +5,16 @@ Open `index.html` in a browser to see it exactly as visitors will.
 
 ```
 Website/
-├── index.html              Home — bio, fields, current work, profile links
-├── research.html           Working papers, articles, chapters, data & code
-├── teaching.html           Courses, syllabi, seminar
+├── index.html              Home — bio, fields, current work
+├── research.html           Working papers, articles, book chapters
+├── teaching.html           Courses and official course listing
 ├── cv.html                 Embedded CV preview + download, summary tables
-├── contact.html            Address, office hours, admissions pointer
+├── contact.html            Address, enquiries, admissions pointer
+├── robots.txt              Search engines: indexing allowed
+├── sitemap.xml             Page list for search engines
 ├── assets/
-│   ├── style.css           All styling for every page
-│   └── photo.jpg           ← add your portrait here (not yet present)
+│   └── style.css           All styling for every page
+│   (add assets/photo.jpg for a portrait — optional)
 ├── NguyenQH_CV_Web.pdf     PUBLIC CV — no phone, no email. Linked from the site.
 └── NguyenQH_CV_092026.pdf  PRIVATE master (has phone + email). Never publish it.
 ```
@@ -27,18 +29,18 @@ Website/
 Everything below is already written except the links. Search the HTML files for
 `href="#"` — every one is a placeholder waiting for a URL.
 
-| Where | What's needed |
-|---|---|
-| `index.html` | Google Scholar, RePEc/IDEAS, SSRN, ORCID URLs |
-| `index.html`, `research.html` | Drive links for the three working papers |
-| `research.html` | DOI / publisher links for the eight journal articles |
-| `teaching.html` | Your real course names, codes, terms, and Drive links |
-| `contact.html` | Office building and room, office hours |
-| — | Your phone number and email are deliberately **not** on the site (see §6) |
-| `assets/photo.jpg` | A portrait, roughly 600×740 px |
+The site is complete and live. Nothing below is required — these are the
+optional additions still outstanding.
 
-The photo is optional — if the file is missing, the site hides the image slot
-cleanly rather than showing a broken icon.
+| Where | What could be added |
+|---|---|
+| `assets/photo.jpg` | A portrait, roughly 600×740 px. Optional: the layout hides the slot cleanly when the file is missing |
+| `index.html`, `research.html` | Links for the three working papers, replacing the "Draft available soon" labels |
+| `research.html` | Links for the two articles with no DOI: Economics Bulletin (2011) and Shodai Ronshu (2018) |
+| `index.html` | A Profiles section (Google Scholar, ORCID …) — the markup is there, commented out |
+
+Your phone number and email address appear nowhere on the site, by choice.
+See §6.
 
 ---
 
@@ -268,7 +270,7 @@ your computer is untouched, so you can always put the site back.
 
 | Level | How | Effect | Reversible? |
 |---|---|---|---|
-| **1. Hide from Google** | Already on — see §6 | Site works for anyone with the link, but does not appear in search results | Yes, instantly |
+| **1. Hide from Google** | Add `<meta name="robots" content="noindex, nofollow">` to each page's `<head>`, and set `robots.txt` to `Disallow: /` | Site works for anyone with the link, but does not appear in search results | Yes, instantly |
 | **2. Unpublish** | Repo → **Settings → Pages → Unpublish site** | URL returns 404. Repo and files stay put | Yes, ~1 minute |
 | **3. Make repo private** | Repo → **Settings → General → Change visibility → Private** | Pages is switched off automatically (free plan serves public repos only), and the repo disappears from your profile | Yes — set it Public again and re-enable Pages |
 | **4. Delete the repo** | Repo → **Settings → General → bottom → Delete this repository** | Everything on GitHub is gone and the URL is freed | No — but re-uploading from this folder takes two minutes |
