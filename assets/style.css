@@ -258,6 +258,31 @@ a:hover { color: var(--accent-lit); }
   font-size: 0.8rem;
 }
 
+/* ---------- status label ----------
+   For a paper with nothing to link yet. Deliberately not a button: it carries
+   no border and no hover, so it never reads as clickable. */
+
+.status {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin: 0;
+  font-style: normal;
+}
+
+.status::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  opacity: 0.55;
+}
+
 /* ---------- small link-buttons ---------- */
 
 .btn {
