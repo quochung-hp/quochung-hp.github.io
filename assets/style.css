@@ -1,0 +1,376 @@
+/* ---------------------------------------------------------------
+   Nguyen Quoc Hung — academic site
+   Single stylesheet for all pages.
+   Edit the tokens in :root to restyle the whole site at once.
+   --------------------------------------------------------------- */
+
+:root {
+  --ink:        #1a1d21;
+  --ink-soft:   #4a5157;
+  --ink-faint:  #767d84;
+  --rule:       #e2e5e9;
+  --bg:         #ffffff;
+  --bg-soft:    #f7f8fa;
+  --accent:     #1f3a5f;   /* deep navy — links, headings, accents */
+  --accent-lit: #2f5b93;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 44rem;   /* comfortable reading width */
+  --wide:    62rem;   /* page frame */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink:       #e6e8ea;
+    --ink-soft:  #b0b6bc;
+    --ink-faint: #868d94;
+    --rule:      #2c3137;
+    --bg:        #14171a;
+    --bg-soft:   #1b1f23;
+    --accent:    #8fb4e0;
+    --accent-lit:#a9c8ee;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink:       #e6e8ea;
+  --ink-soft:  #b0b6bc;
+  --ink-faint: #868d94;
+  --rule:      #2c3137;
+  --bg:        #14171a;
+  --bg-soft:   #1b1f23;
+  --accent:    #8fb4e0;
+  --accent-lit:#a9c8ee;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- layout ---------- */
+
+.wrap {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main { padding: 2.5rem 0 4rem; }
+
+section + section { margin-top: 3rem; }
+
+/* ---------- masthead + nav ---------- */
+
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.75rem 0 0;
+}
+
+.masthead__name {
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.masthead__name a { color: var(--ink); text-decoration: none; }
+
+.masthead__role {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  color: var(--ink-faint);
+  margin: 0.3rem 0 0;
+  letter-spacing: 0.01em;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.4rem;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+}
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover { color: var(--accent); }
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- typography ---------- */
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.28rem;
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-faint);
+  margin: 2rem 0 0.9rem;
+  font-weight: 600;
+}
+
+p { margin: 0 0 1.05rem; max-width: var(--measure); }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent-lit); }
+
+.lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- home hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.hero__photo {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  display: block;
+}
+
+.hero__body > :first-child { margin-top: 0; }
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero__photo { width: 150px; height: 184px; }
+  body { font-size: 17px; }
+  h1 { font-size: 1.6rem; }
+}
+
+/* ---------- fields list ---------- */
+
+.fields { margin: 0; padding: 0; list-style: none; max-width: var(--measure); }
+
+.fields li {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.fields li:last-child { border-bottom: 0; }
+
+.fields dt, .fields .label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  padding-top: 0.25rem;
+}
+
+@media (max-width: 560px) {
+  .fields li { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+/* ---------- publication entries ---------- */
+
+.pubs { margin: 0; padding: 0; list-style: none; }
+
+.pub {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+
+.pub:last-child { border-bottom: 0; }
+
+.pub__title {
+  display: block;
+  font-size: 1.04rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+
+.pub__meta {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+
+.pub__meta em { font-style: italic; color: var(--ink-soft); }
+
+.pub__abstract {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.6rem;
+}
+
+.pub__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+}
+
+/* ---------- small link-buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  background: var(--bg);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn--solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn--solid:hover { background: var(--accent-lit); border-color: var(--accent-lit); color: #fff; }
+
+:root[data-theme="dark"] .btn--solid,
+.btn--solid { }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn--solid { color: #14171a; }
+}
+:root[data-theme="dark"] .btn--solid { color: #14171a; }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+/* ---------- profile links (home) ---------- */
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- course cards ---------- */
+
+.course {
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1rem;
+  max-width: var(--measure);
+}
+
+.course__title { font-size: 1.04rem; font-weight: 600; margin: 0 0 0.25rem; }
+
+.course__term {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.7rem;
+}
+
+.course p { font-size: 0.95rem; color: var(--ink-soft); }
+.course p:last-of-type { margin-bottom: 0.9rem; }
+
+/* ---------- embedded PDF viewer ---------- */
+
+.embed {
+  width: 100%;
+  max-width: var(--measure);
+  aspect-ratio: 8.5 / 11;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--bg-soft);
+}
+
+@media (max-width: 640px) {
+  .embed { aspect-ratio: 3 / 4; }
+}
+
+/* ---------- notes / placeholders ---------- */
+
+.note {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--rule);
+  padding: 0.7rem 0.95rem;
+  border-radius: 0 3px 3px 0;
+  max-width: var(--measure);
+}
+
+/* ---------- footer ---------- */
+
+.foot {
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 0 2.5rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.foot p { margin: 0; max-width: none; }

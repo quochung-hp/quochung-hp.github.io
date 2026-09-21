@@ -1,0 +1,11 @@
+# Never publish the private CV. It carries the phone number and email address
+# that are deliberately kept off the website. If a copy ever lands back in this
+# folder, git will refuse to stage it.
+NguyenQH_CV_092026.pdf
+*_private.pdf
+
+# Windows / editor noise
+Thumbs.db
+desktop.ini
+*~
+.vscode/
