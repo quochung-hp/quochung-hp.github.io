@@ -261,6 +261,37 @@ If you find yourself doing this often, install **GitHub Desktop**
 (desktop.github.com) — a normal Windows app that syncs the folder to GitHub with
 one button, no commands.
 
+### Taking the site down
+
+Four levels, softest first. **Nothing here deletes your files** — the folder on
+your computer is untouched, so you can always put the site back.
+
+| Level | How | Effect | Reversible? |
+|---|---|---|---|
+| **1. Hide from Google** | Already on — see §6 | Site works for anyone with the link, but does not appear in search results | Yes, instantly |
+| **2. Unpublish** | Repo → **Settings → Pages → Unpublish site** | URL returns 404. Repo and files stay put | Yes, ~1 minute |
+| **3. Make repo private** | Repo → **Settings → General → Change visibility → Private** | Pages is switched off automatically (free plan serves public repos only), and the repo disappears from your profile | Yes — set it Public again and re-enable Pages |
+| **4. Delete the repo** | Repo → **Settings → General → bottom → Delete this repository** | Everything on GitHub is gone and the URL is freed | No — but re-uploading from this folder takes two minutes |
+
+**Level 2 or 3 is the everyday kill switch.** Level 3 is the stronger one: it
+hides the source files as well as the site.
+
+The `quochung-hp.github.io` URL is tied to your username, so it comes back
+unchanged whenever you republish. You do not lose the address.
+
+#### What taking it down does *not* undo
+
+- **Google's cache and the Internet Archive** may keep copies for weeks. You can
+  ask Google to drop a page sooner via Search Console; archive.org has a removal
+  request form.
+- **Anything already downloaded** stays downloaded. This is the real reason the
+  published CV has no phone number or email — that decision protects you even
+  if the site later comes down.
+- **Google Drive files are separate.** If you link papers or syllabi from Drive
+  (§2), unpublishing the site does *not* revoke those links. Anyone holding one
+  can still open the file. To close those off, change the Drive folder's sharing
+  back to **Restricted**.
+
 ### A custom domain (optional, later)
 
 A domain like `nguyenquochung.com` costs roughly ¥1,500–2,000 per year from
