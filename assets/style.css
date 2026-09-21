@@ -335,6 +335,11 @@ a:hover { color: var(--accent-lit); }
 .course p { font-size: 0.95rem; color: var(--ink-soft); }
 .course p:last-of-type { margin-bottom: 0.9rem; }
 
+/* A card listing only the course name (no description or links) should sit
+   tight rather than carry the trailing margin meant for a body paragraph. */
+.course > :last-child { margin-bottom: 0; }
+.course:has(> .course__title:only-child) { padding: 0.85rem 1.25rem; }
+
 /* ---------- embedded PDF viewer ---------- */
 
 .embed {
